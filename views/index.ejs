@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+* {
+  box-sizing: border-box;
+}
+
+.column {
+  float: left;
+  padding: 15px;
+}
+
+.left {
+  width: 50%;
+
+}
+
+.middle {
+  width: 25%;
+  padding-top: 15px;
+}
+
+.right {
+  width: 25%;
+}
+
+
+</style>
+</head>
+<body>
+
+<header>
+	<%- include('partials/header') %>
+</header>
+
+<html>
+<head>
+	<body style="text-align: center; font-size: 1.25rem; background-image: url(/images/background.jpg);">
+		<div style="background-color: #F99E09; height:110px; padding-top:20px;">
+			<div style="font-size: 2.5rem; text-align: left; padding-left: 50px ;">
+				Never Board 
+				<div style="font-size: medium; padding-left: 25px;">
+					Game Night Records
+				</div>
+			<table style="float: right; width: 400px;">
+				<tr style="font-size: 15px;">
+				<th style="padding-right: 50px; padding-bottom: 50px;">
+					<a href="/add-game">Add Games</a>
+				</th>
+				<th style="padding-right: 50px; padding-bottom: 50px;">
+					<a href="/edit-game">Edit Games</a>
+				</th>
+				<th style="padding-bottom: 50px;">
+					<a href="/add-game-session">Add Game Session
+				</th>
+			</table>
+			</div>
+		</div>
+		<div class="row">
+			<div class="column left">
+			<table border=1 style="background-color: #e9e9e9;
+			font-family: Arial, Helvetica, sans-serif;">
+				<h1 style="text-align: left; font-family: Arial, Helvetica, sans-serif;">
+					Available Games</h1>
+				<tr class="header">
+					<th>Game</th>
+					<th>Last Played</th>
+					<th>Players</th>
+					<th>Most Recent Winner</th>
+				</tr>
+				
+				<%
+				if(data.length!=0){
+				var i=1;
+				data.forEach(function(result){
+				%>
+				<tr>
+					<td><%=result.game_name %></td>
+					<td><%=result.play_date.toDateString() %></td>
+					<td><%=result.num_players %></td>
+					<td><%=result.winner %></td>
+				</tr>
+				<%  i++; }) %>
+				<% } else{ %>
+					<tr>
+						<td colspan="7">No Data Found</td>
+					</tr>
+				<% } %>
+			</table>
+			<table border=1 style="background-color: #e9e9e9;
+			font-family: Arial, Helvetica, sans-serif;">
+				<h1 style="text-align: left; font-family: Arial, Helvetica, sans-serif;">
+					All Session Records</h1>
+				<tr class="header">
+					<th>Game</th>
+					<th>Date of Play</th>
+					<th>Players</th>
+					<th>Session Winner</th>
+				</tr>
+				<%
+				if(data5.length!=0){
+				var i=1;
+				data5.forEach(function(result5){
+				%>
+				<tr>
+					<td><%=result5.game_name %></td>
+					<td><%=result5.play_date.toDateString() %></td>
+					<td><%=result5.num_players %></td>
+					<td><%=result5.winner %></td>
+				</tr>
+				<%  i++; }) %>
+				<% } else{ %>
+					<tr>
+						<td colspan="7">No Data Found</td>
+					</tr>
+				<% } %>
+			</table>
+			</div>
+			<div class="column middle">
+			<table border=1 style="background-color: #e9e9e9;
+			font-family: Arial, Helvetica, sans-serif;">
+			<h1 style="text-align: left; font-family: Arial, Helvetica, sans-serif;">
+				Most Wins</h1>
+			<tr class="header">
+				<th>Player</th>
+				<th>Wins</th>
+			</tr>
+			
+			<%
+			if(data2.length!=0){
+			var i=1;
+			data2.forEach(function(result2){
+			%>
+			<tr>
+				<td><%=result2.winner %></td>
+				<td><%=result2.wins %></td>
+			</tr>
+			<%  i++; }) %>
+			<% } else{ %>
+				<tr>
+					<td colspan="7">No Data Found</td>
+				</tr>
+			<% } %>
+			</table>
+			<table border=1 style="background-color: #e9e9e9;
+			font-family: Arial, Helvetica, sans-serif;">
+			<h1 style="text-align: left; font-family: Arial, Helvetica, sans-serif;">
+				Most Played</h1>
+			<tr class="header">
+				<th>Game</th>
+				<th>Plays</th>
+			</tr>
+			
+			<%
+			if(data4.length!=0){
+			var i=1;
+			data4.forEach(function(result4){
+			%>
+			<tr>
+				<td><%=result4.game_name %></td>
+				<td><%=result4.times_played %></td>
+			</tr>
+			<%  i++; }) %>
+			<% } else{ %>
+				<tr>
+					<td colspan="7">No Data Found</td>
+				</tr>
+			<% } %>
+			</table>
+			</div>
+			<div class="column right">
+				<table border=1 style="background-color: #e9e9e9;
+				font-family: Arial, Helvetica, sans-serif;">
+				<h1 style="text-align: left; font-family: Arial, Helvetica, sans-serif;">
+					Upcoming</h1>
+				<tr class="header">
+					<th>Last Game Session</th>
+					<th>Next Game Session</th>
+				</tr>
+				
+				<%
+				if(data3.length!=0){
+				var i=1;
+				data3.forEach(function(result3){
+				%>
+				<tr>
+					<td><%=result3.last_session.toDateString() %></td>
+					<td><%=result3.next_session.toDateString() %></td>
+				</tr>
+				<%  i++; }) %>
+				<% } else{ %>
+					<tr>
+						<td colspan="7">No Data Found</td>
+					</tr>
+				<% } %>
+			</div>
+		</div>
+	</body>
+</html>
+<%- include ('partials/footer') %>
+

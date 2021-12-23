@@ -1,0 +1,32 @@
+<%- include ('partials/header.ejs') %>
+
+<!DOCTYPE html>
+<html lang = "en">
+<head>
+  <meta charset = "UTF-8">
+  <link rel = "play_sessions" href="/add-game">
+  <title> Add New Game </title>
+</head>
+
+<body>
+    <header>
+      <h1>Game List Updater</h1>
+    </header>
+    <form action="/add-game" method="POST">
+      <fieldset>
+        <h3>Add New Game</h3>
+        <label>Game Title</label>
+        <input type="text" name="title" id="title" required>
+        <label>Minimum Players</label>
+        <input type="text" name="min" id="min" required>
+        <label>Maximum Players</label>
+        <input type="text" name="max" id="max" required>
+        <br><br>
+        <button type ="reset">Reset</button>
+        <button type ="submit">Submit</button>
+      </fieldset>
+    </form>
+</body>
+
+
+<%- include ('partials/footer.ejs') %>

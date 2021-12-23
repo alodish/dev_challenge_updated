@@ -1,0 +1,15 @@
+{
+    "dev": {
+        "multipleStatements": true,
+        "host": "localhost",
+        "user": "db_user",
+        "password": "password",
+        "database": "gamenight",
+        "port": 5000
+    }
+}
+
+
+
+    
+
